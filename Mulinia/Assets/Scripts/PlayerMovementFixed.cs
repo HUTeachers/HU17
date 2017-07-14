@@ -58,9 +58,6 @@ public class PlayerMovementFixed : MonoBehaviour {
             {
                 tempRotation.eulerAngles = new Vector3(0,0,270);
             }
-
-            transform.rotation = tempRotation;
-
         }
 
         if (X || Y)
@@ -78,7 +75,7 @@ public class PlayerMovementFixed : MonoBehaviour {
         }
 		else
 		{
-			throw new System.Exception("Both X and Y enabled or none enabled at all, correct this");
+			throw new System.Exception("Neither X or Y enabled, correct this");
 		}
 
     }
