@@ -16,10 +16,11 @@ public class PlayerManager : MonoBehaviour {
 
 	private Jump jump;
 	private PlayerMovementSmooth pms;
-	private GroundCheck gc;
 	private Climb climb;
 	private LadderMovement lame;
 
+	private GroundCheck gc;
+	private Whip whip;
 
 	private BoxCollider2D playerCollider;
 
@@ -31,9 +32,11 @@ public class PlayerManager : MonoBehaviour {
 
 		jump = GetComponent<Jump>();
 		pms = GetComponent<PlayerMovementSmooth>();
-		gc = GetComponentInChildren<GroundCheck>();
 		climb = GetComponent<Climb>();
 		lame = GetComponent<LadderMovement>();
+
+		whip = GetComponentInChildren<Whip>();
+		gc = GetComponentInChildren<GroundCheck>();
 
 		playerCollider = GetComponent<BoxCollider2D>();
 
@@ -60,37 +63,46 @@ public class PlayerManager : MonoBehaviour {
 
 		if(inputState != PlayerState)
 		{
-			UpdateState(PlayerState);
+			UpdateState(PlayerState, inputState);
         }
 		
 
 	}
 
-	void UpdateState(State input)
+	void UpdateState(State playerState, State prevState)
 	{
-		switch (input)
+		switch (playerState)
 		{
 			case State.OnGround:
-				pms.enabled = true;
-				lame.enabled = false;
-				playerCollider.isTrigger = false;
-				pms.UnFreeze();
-				break;
-			case State.OnLadder:
-				pms.Freeze(); // Removes all inertia from the rigidbody
-				pms.enabled = false;
-				lame.enabled = true;
-				playerCollider.isTrigger = true; // Walk through floors, yep.
+				UnLadderSet();
                 break;
-			case State.Jumping:
-				pms.enabled = true;
-				lame.enabled = false;
-				playerCollider.isTrigger = false;
-				pms.UnFreeze();
+			case State.OnLadder:
+				LadderSet();
+				if (prevState == State.OnGround && Input.GetAxis("Vertical") < 0)
+					transform.position = new Vector3(transform.position.x, transform.position.y - 0.5f, transform.position.z);
 				break;
+			case State.Jumping:
+				UnLadderSet();
+                break;
 			default:
 				break;
 		}
 
+	}
+
+	void LadderSet()
+	{
+		pms.Freeze(); // Removes all inertia from the rigidbody
+		pms.enabled = false;
+		lame.enabled = true;
+		playerCollider.isTrigger = true; // Walk through floors, yep.
+	}
+
+	void UnLadderSet()
+	{
+		pms.enabled = true;
+		lame.enabled = false;
+		playerCollider.isTrigger = false;
+		pms.UnFreeze();
 	}
 }
