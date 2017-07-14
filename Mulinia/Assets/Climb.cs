@@ -26,6 +26,7 @@ public class Climb : MonoBehaviour {
 		}
 		else if (climbing)
 		{
+			//You can disconnect from a ladder if you are currently not moving vertically, and instead horizontally.
 			if (Input.GetAxis("Horizontal") != 0 && Input.GetAxis("Vertical") == 0 || Input.GetKeyDown(KeyCode.Space))
 			{
 				climbing = false;
