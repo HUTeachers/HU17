@@ -4,6 +4,7 @@ using System.Collections;
 
 public class ChangeScene : MonoBehaviour {
 
+	[Header("Remember to add scenes using ctrl + shift + b")]
 	public string sceneName;
 
 	// Use this for initialization
@@ -13,8 +14,8 @@ public class ChangeScene : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
-	}
+		
+    }
 
 	public void LoadScene()
 	{

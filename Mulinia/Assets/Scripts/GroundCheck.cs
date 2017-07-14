@@ -21,7 +21,7 @@ public class GroundCheck : MonoBehaviour {
 	//Når Ground-objekt forlader triggerzone gøres figur ikke-grounded
     void OnTriggerExit2D (Collider2D col)
 	{
-		if (col.gameObject.tag == "Ground")
+		if (col.gameObject.tag == "Ground" || col.gameObject.tag == "Ladder")
 		{
 			Grounded = false;
 		}
@@ -30,7 +30,7 @@ public class GroundCheck : MonoBehaviour {
 	//Når Ground-objekt befinder sig i triggerzone gøres figur grounded
     void OnTriggerStay2D (Collider2D col)
 	{
-		if (col.gameObject.tag == "Ground")
+		if (col.gameObject.tag == "Ground" || col.gameObject.tag == "Ladder")
 		{
 			Grounded = true;
 		}
@@ -38,7 +38,7 @@ public class GroundCheck : MonoBehaviour {
 
     void OnTriggerEnter2D (Collider2D col)
     {
-        Debug.Log("Trigger Entered");
+        
 
     }
 

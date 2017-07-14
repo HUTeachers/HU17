@@ -10,7 +10,7 @@ public class Jump : MonoBehaviour {
 
 
 	//Den kraft man hopper med
-	public float JumpPower = 8f;
+	public float JumpPower = 6f;
    
     public int JumpCount = 1;
 

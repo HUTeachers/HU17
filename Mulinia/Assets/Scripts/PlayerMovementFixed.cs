@@ -8,9 +8,6 @@ public class PlayerMovementFixed : MonoBehaviour {
     public bool X;
     public bool Y;
 
-    int xMove;
-    int yMove;
-
 	// Use this for initialization
 	void Start () {
 	
@@ -24,12 +21,6 @@ public class PlayerMovementFixed : MonoBehaviour {
         //checks for movement along the X axis if this is allowed
         if(X)
         {
-            xMove = stepSize;
-
-            if (!Y)
-            {
-                yMove = 0;
-            }
             if (Input.GetAxisRaw("Horizontal") > 0)
             {
                 tempRotation.eulerAngles = new Vector3(0,0,0);
@@ -43,12 +34,6 @@ public class PlayerMovementFixed : MonoBehaviour {
         //Checks for movement along the y axis if this is allowed
         if(Y)
         {
-            yMove = stepSize;
-
-            if (!X)
-            {
-                xMove = 0;
-            }
 
             if (Input.GetAxisRaw("Vertical") > 0)
             {
