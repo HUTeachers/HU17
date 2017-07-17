@@ -71,13 +71,16 @@ public class PlayerManager : MonoBehaviour {
 
 	void UpdateState(State playerState, State prevState)
 	{
+        Debug.Log(playerState);
 		switch (playerState)
 		{
+
 			case State.OnGround:
 				UnLadderSet();
                 break;
 			case State.OnLadder:
 				LadderSet();
+                //Moves the player down the ladder.
 				if (prevState == State.OnGround && Input.GetAxis("Vertical") < 0)
 					transform.position = new Vector3(transform.position.x, transform.position.y - 0.5f, transform.position.z);
 				break;
@@ -103,6 +106,7 @@ public class PlayerManager : MonoBehaviour {
 		pms.enabled = true;
 		lame.enabled = false;
 		playerCollider.isTrigger = false;
+        climb.climbing = false;
 		pms.UnFreeze();
 	}
 }
