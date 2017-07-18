@@ -7,11 +7,6 @@ public class Flicker : MonoBehaviour {
 	SpriteRenderer playerSpriteRenderer;
 	PlayerMovementSmooth playerMovementSmooth;
 
-	void OnDestroy()
-	{
-		Debug.Log("You have met with a terrible fate, haven't you?");
-	}
-
 	public void StartFlicker(float flickertime)
 	{
 		StartCoroutine(Flick(flickertime));
