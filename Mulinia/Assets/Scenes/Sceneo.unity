@@ -357,12 +357,12 @@ Prefab:
     - target: {fileID: 61853533124985230, guid: 776b27409eea6a64aae5a9051b8c3609,
         type: 2}
       propertyPath: m_Size.x
-      value: 0.0001
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 61853533124985230, guid: 776b27409eea6a64aae5a9051b8c3609,
         type: 2}
       propertyPath: m_Size.y
-      value: 0.0001
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 776b27409eea6a64aae5a9051b8c3609, type: 2}
