@@ -47,18 +47,24 @@ public class KnockBack : MonoBehaviour {
 
     IEnumerator KnockUp(float waittime, Collision2D col)
     {
-        Vector2 velocity = new Vector2();
+        Vector2 KnockbackVector = new Vector2();
         if (x)
         {
-            velocity.x = PowerX;
+            KnockbackVector.x = PowerX;
         }
 
         if (y)
         {
-            velocity.y = PowerY;
+            KnockbackVector.y = PowerY;
         }
 
-        col.gameObject.GetComponent<Rigidbody2D>().AddForce(velocity, ForceMode2D.Impulse);
+		if(col.transform.position.x < transform.position.x)
+		{
+			KnockbackVector.x *= -1;
+		}
+			
+
+        col.gameObject.GetComponent<Rigidbody2D>().AddForce(KnockbackVector, ForceMode2D.Impulse);
 
         //Lille trick så man ikke overføre en reference hver gang man kolidere med den samme spike
         if(playerMovementSmooth == null)

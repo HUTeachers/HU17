@@ -46,7 +46,7 @@ public class BlindWalking : MonoBehaviour {
 
 	void OnCollisionEnter2D (Collision2D ting)
 	{
-		if (ting.gameObject.tag != "Ground" && ting.gameObject.tag != "Player")
+		if (ting.gameObject.tag != "Ground")
 		{
 			retning *= -1;
 		}
