@@ -71,7 +71,6 @@ public class PlayerManager : MonoBehaviour {
 
 	void UpdateState(State playerState, State prevState)
 	{
-        Debug.Log(playerState);
 		switch (playerState)
 		{
 
@@ -98,15 +97,16 @@ public class PlayerManager : MonoBehaviour {
 		pms.Freeze(); // Removes all inertia from the rigidbody
 		pms.enabled = false;
 		lame.enabled = true;
-		playerCollider.isTrigger = true; // Walk through floors, yep.
+		Physics2D.SetLayerCollisionMask(LayerMask.NameToLayer("Ground"), 0); //Ground collider nu ikke længere med player
+
 	}
 
 	void UnLadderSet()
 	{
 		pms.enabled = true;
 		lame.enabled = false;
-		playerCollider.isTrigger = false;
         climb.climbing = false;
 		pms.UnFreeze();
+		Physics2D.SetLayerCollisionMask(LayerMask.NameToLayer("Ground"), -1); // -1 collide med alting.
 	}
 }

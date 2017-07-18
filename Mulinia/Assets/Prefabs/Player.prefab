@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4804105471368256}
   - component: {fileID: 212838191457666130}
   - component: {fileID: 114647466904402356}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Whip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ GameObject:
   - component: {fileID: 92703014837890212}
   - component: {fileID: 124855888177867160}
   - component: {fileID: 81619695045452824}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -64,9 +64,9 @@ GameObject:
   - component: {fileID: 114707998517371770}
   - component: {fileID: 114019476624418366}
   - component: {fileID: 114938706166450300}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -81,7 +81,7 @@ GameObject:
   - component: {fileID: 4759843477684864}
   - component: {fileID: 114396106846344916}
   - component: {fileID: 61883256018055984}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: groundcheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}

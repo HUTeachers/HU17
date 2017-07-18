@@ -296,6 +296,22 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1102958408432388, guid: e161862c84c61dd4c8649a33f2ac5bba, type: 2}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1207227054005458, guid: e161862c84c61dd4c8649a33f2ac5bba, type: 2}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1993671353957032, guid: e161862c84c61dd4c8649a33f2ac5bba, type: 2}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1459214680722478, guid: e161862c84c61dd4c8649a33f2ac5bba, type: 2}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e161862c84c61dd4c8649a33f2ac5bba, type: 2}
   m_IsPrefabParent: 0
@@ -501,7 +517,7 @@ GameObject:
   - component: {fileID: 1510405016}
   - component: {fileID: 1510405015}
   - component: {fileID: 1510405014}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Ground
   m_TagString: Ground
   m_Icon: {fileID: 0}
