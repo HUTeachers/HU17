@@ -39,13 +39,13 @@ public class KnockBack : MonoBehaviour {
         if (ting.gameObject.tag == "Player")
         {
             
-            StartCoroutine(KnockUp(DisableTime, ting));
+            KnockUp(DisableTime, ting);
 
             //ting.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(x ? PowerX : 0f, y ? PowerY : 0f), ForceMode2D.Impulse);
         }
     }
 
-    IEnumerator KnockUp(float waittime, Collision2D col)
+    void KnockUp(float waittime, Collision2D col)
     {
         Vector2 KnockbackVector = new Vector2();
         if (x)
@@ -62,8 +62,7 @@ public class KnockBack : MonoBehaviour {
 		{
 			KnockbackVector.x *= -1;
 		}
-			
-
+		
         col.gameObject.GetComponent<Rigidbody2D>().AddForce(KnockbackVector, ForceMode2D.Impulse);
 
         //Lille trick så man ikke overføre en reference hver gang man kolidere med den samme spike
@@ -76,25 +75,11 @@ public class KnockBack : MonoBehaviour {
         
         //hvis man har indikeret at man vil blinke når man tager skade, så blinker man. 
         if(DamageFlicker)
-            StartCoroutine(Flicker());
-
-        yield return new WaitForSeconds(waittime);
-        playerMovementSmooth.enabled = true;
-
+		{
+			Flicker flick = col.gameObject.AddComponent<Flicker>();
+			flick.StartFlicker(waittime);
+			flick = new Flicker();
+			playerSpriteRenderer.enabled = true;
+        }
     }
-
-    IEnumerator Flicker()
-    {
-        do
-        {
-            playerSpriteRenderer.enabled = false;
-            yield return new WaitForSeconds(0.1f);
-            playerSpriteRenderer.enabled = true;
-            yield return new WaitForSeconds(0.1f);
-        } while (!playerMovementSmooth.enabled);
-
-    }
-
-
-
 }

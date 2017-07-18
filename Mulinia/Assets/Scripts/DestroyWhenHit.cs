@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections.Generic;
 	
 // Destruer objektet dette script ligger på når det bliver rørt af en spiller.
-// Der skal være en trigger collider på dette gameObject.
+// Dette objekt kan være både trigger og normal collider. -  18-07-2017.
 
 public class DestroyWhenHit : MonoBehaviour
 {
@@ -40,5 +40,11 @@ public class DestroyWhenHit : MonoBehaviour
                 Destroy(gameObject);
             }
         }
+	}
+
+	//Fix så både trigger og normal collider er en mulighed.
+	void OnCollisionEnter2D(Collision2D col)
+	{
+		OnTriggerEnter2D(col.collider);
 	}
 }
