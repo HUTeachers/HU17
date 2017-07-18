@@ -87,10 +87,13 @@ public class Whip : MonoBehaviour {
 	{
 		foreach (GameObject item in whipCollisions)
 		{
-			IWhippable temp = item.GetComponent<IWhippable>();
-			if(temp != null)
+			IWhippable[] temp = item.GetComponents<IWhippable>();
+            if(temp.Length != 0)
 			{
-				temp.Whipped();
+                foreach (var whipInterface in temp)
+                {
+                    whipInterface.Whipped();
+                }
 			}
 		}
 
