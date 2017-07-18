@@ -77,11 +77,12 @@ public class Whip : MonoBehaviour {
 	{
 
 		//Get everything we whip.
-		RaycastHit2D[] collidersWhipped = Physics2D.RaycastAll(new Vector2(transform.position.x, transform.position.y + 0.2f), new Vector2(temp.x, temp.y), 0.5f);
-		RaycastHit2D[] colliderstemp = Physics2D.RaycastAll(new Vector2(transform.position.x, transform.position.y - 0.2f), new Vector2(temp.x, temp.y), 0.5f);
+		
+		RaycastHit2D[] collidersHigh = Physics2D.RaycastAll(new Vector2(transform.position.x, transform.position.y + 0.2f), new Vector2(temp.x, temp.y), 0.5f);
+		RaycastHit2D[] collidersLow = Physics2D.RaycastAll(new Vector2(transform.position.x, transform.position.y - 0.2f), new Vector2(temp.x, temp.y), 0.5f);
 
-		whiplist.AddRange(collidersWhipped.Select(x => x.collider.gameObject));
-		whiplist.AddRange(colliderstemp.Select(x => x.collider.gameObject).Where(x => !whiplist.Contains(x)).ToList());
+		whiplist.AddRange(collidersHigh.Select(x => x.collider.gameObject));
+		whiplist.AddRange(collidersLow.Select(x => x.collider.gameObject).Where(x => !whiplist.Contains(x)).ToList());
 
 	}
 
