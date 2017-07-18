@@ -6,7 +6,7 @@ public class Climb : MonoBehaviour {
 
 	public bool climbing = false;
 
-	private float searchLength = 1.2f;
+	private float searchLength = .2f;
 
 	// Update is called once per frame
 	void Update () {
@@ -26,7 +26,7 @@ public class Climb : MonoBehaviour {
         //Upwards ladder searching
         else if(Input.GetAxis("Vertical") > 0 && !climbing)
         {
-            RaycastHit2D LadderSearcher = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y + 0.5f), Vector2.up, searchLength-1f, LayerMask.GetMask("LadderLayer"));
+            RaycastHit2D LadderSearcher = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y + 0.5f), Vector2.up, searchLength, LayerMask.GetMask("LadderLayer"));
             if (LadderSearcher.collider != null)
             {
                 climbing = true;
