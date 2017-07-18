@@ -78,7 +78,6 @@ public class KnockBack : MonoBehaviour {
 		{
 			Flicker flick = col.gameObject.AddComponent<Flicker>();
 			flick.StartFlicker(waittime);
-			flick = new Flicker();
 			playerSpriteRenderer.enabled = true;
         }
     }

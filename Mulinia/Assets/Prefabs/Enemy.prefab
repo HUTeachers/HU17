@@ -25,6 +25,8 @@ GameObject:
   - component: {fileID: 50165582580443830}
   - component: {fileID: 114789366596375158}
   - component: {fileID: 114132951874323848}
+  - component: {fileID: 114598135193341134}
+  - component: {fileID: 114044959229639804}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -90,6 +92,17 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &114044959229639804
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1193222373962118}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd99d48edc338d04db06e2c6f9823c05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114132951874323848
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -107,6 +120,20 @@ MonoBehaviour:
   PowerY: 4
   PowerX: 4
   DisableTime: 0.5
+--- !u!114 &114598135193341134
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1193222373962118}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d2aa878f03c6c64ea80ebe7b5194a23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DestroyWhenPlayerHit: 1
+  DestroyWhenListHit: 0
+  stringsThatDestroyThis: []
 --- !u!114 &114789366596375158
 MonoBehaviour:
   m_ObjectHideFlags: 1

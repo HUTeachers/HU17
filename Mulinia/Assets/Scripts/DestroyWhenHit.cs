@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
-	
+using System;
+
 // Destruer objektet dette script ligger på når det bliver rørt af en spiller.
 // Dette objekt kan være både trigger og normal collider. -  18-07-2017.
 
@@ -47,4 +48,5 @@ public class DestroyWhenHit : MonoBehaviour
 	{
 		OnTriggerEnter2D(col.collider);
 	}
+
 }
