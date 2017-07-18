@@ -30,7 +30,6 @@ public class ActivateGameObjectOnTriggerEnter : MonoBehaviour, IWhippable
     {
         if(whippable)
         {
-            Debug.Log("Whipped son");
             activatableObject.SetActive(activate);
 
             if(revert)

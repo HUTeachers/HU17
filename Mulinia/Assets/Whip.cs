@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public interface IWhippable
 {
@@ -16,13 +17,13 @@ public class Whip : MonoBehaviour {
 
 	SpriteRenderer sr;
 
-	List<GameObject> whipCollisions;
+	List<GameObject> whiplist;
 
 
 	// Use this for initialization
 	void Start () {
 		sr = GetComponent<SpriteRenderer>();
-		whipCollisions = new List<GameObject>();
+		whiplist = new List<GameObject>();
 	}
 	
 	// Update is called once per frame
@@ -76,16 +77,17 @@ public class Whip : MonoBehaviour {
 	{
 
 		//Get everything we whip.
-		RaycastHit2D[] collidersWhipped = Physics2D.RaycastAll(new Vector2(transform.position.x, transform.position.y), new Vector2(temp.x, temp.y), 0.5f);
-		foreach (RaycastHit2D item in collidersWhipped)
-		{
-			whipCollisions.Add(item.collider.gameObject);
-		}
+		RaycastHit2D[] collidersWhipped = Physics2D.RaycastAll(new Vector2(transform.position.x, transform.position.y + 0.2f), new Vector2(temp.x, temp.y), 0.5f);
+		RaycastHit2D[] colliderstemp = Physics2D.RaycastAll(new Vector2(transform.position.x, transform.position.y - 0.2f), new Vector2(temp.x, temp.y), 0.5f);
+
+		whiplist.AddRange(collidersWhipped.Select(x => x.collider.gameObject));
+		whiplist.AddRange(colliderstemp.Select(x => x.collider.gameObject).Where(x => !whiplist.Contains(x)).ToList());
+
 	}
 
 	private void CollisionHandler()
 	{
-		foreach (GameObject item in whipCollisions)
+		foreach (GameObject item in whiplist)
 		{
 			IWhippable[] temp = item.GetComponents<IWhippable>();
             if(temp.Length != 0)
@@ -97,7 +99,7 @@ public class Whip : MonoBehaviour {
 			}
 		}
 
-		whipCollisions = new List<GameObject>(); //Purge.
+		whiplist = new List<GameObject>(); //Purge.
 	}
 
 	private void SetWhipping(bool state)
