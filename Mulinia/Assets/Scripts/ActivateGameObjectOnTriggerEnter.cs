@@ -12,8 +12,8 @@ public class ActivateGameObjectOnTriggerEnter : MonoBehaviour, IWhippable
 	public GameObject activatableObject;
 
     //Skal objektet aktiveres (activate = true) eller deaktiveres?
-	[Header("Hvis der er et flueben, bliver objektet aktiveret")]
-	public bool activate;
+	[Header("Skal objektet aktiveres når eventet sker? Ellers deaktiveres det.")]
+	public bool activate = true;
 
 	//Gå tilbage på exit?
 	[Header("Hvis der er et flueben, går gameobjektet tilbage til sådan det var før triggeren")]
