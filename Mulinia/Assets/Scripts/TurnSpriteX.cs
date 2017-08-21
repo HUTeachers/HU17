@@ -3,6 +3,9 @@ using System.Collections;
 
 public class TurnSpriteX : MonoBehaviour
 {
+    [Header("Check denne boks af hvis spriten vender modsat")]
+    public bool useDifferentDirection;
+
     float lastX;
 
     // Use this for initialization
@@ -14,20 +17,44 @@ public class TurnSpriteX : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         Vector2 scale = transform.localScale;
+
+
 
         if(lastX < transform.position.x)
         {
-            if(scale.x < 0)
+            if(!useDifferentDirection)
             {
-                scale.x *= -1;
+                if(scale.x < 0)
+                {
+                    scale.x *= -1;
+                }
             }
+            else
+            {
+                if(scale.x > 0)
+                {
+                    scale.x *= -1;
+                }
+            }
+
         }
         else if (lastX > transform.position.x)
         {
-            if (scale.x > 0)
+            if(!useDifferentDirection)
             {
-                scale.x *= -1; 
+                if (scale.x > 0)
+                {
+                    scale.x *= -1; 
+                }
+            }
+            else
+            {
+                if (scale.x < 0)
+                {
+                    scale.x *= -1; 
+                }
             }
         }
 

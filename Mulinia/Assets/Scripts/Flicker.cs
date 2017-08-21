@@ -4,17 +4,17 @@ using UnityEngine;
 
 public class Flicker : MonoBehaviour {
 
-	SpriteRenderer playerSpriteRenderer;
+	public SpriteRenderer playerSpriteRenderer;
 	PlayerMovementSmooth playerMovementSmooth;
 
-	public void StartFlicker(float flickertime)
+    public void StartFlicker(float flickertime)
 	{
 		StartCoroutine(Flick(flickertime));
 	}
 
 	IEnumerator Flick(float flickertime)
 	{
-		playerSpriteRenderer = GetComponent<SpriteRenderer>();
+        //playerSpriteRenderer = GetComponentInChildren<SpriteRenderer>();
 		playerMovementSmooth = GetComponent<PlayerMovementSmooth>();
 
 		float timestamp = Time.timeSinceLevelLoad;
@@ -28,7 +28,7 @@ public class Flicker : MonoBehaviour {
 		playerSpriteRenderer.enabled = true;
 		playerMovementSmooth.enabled = true;
 
-		Destroy(this); //Removes this component.
+		//Destroy(this); //Removes this component.
 	}
 
 }

@@ -69,15 +69,16 @@ public class KnockBack : MonoBehaviour {
         if(playerMovementSmooth == null)
             playerMovementSmooth = col.gameObject.GetComponent<PlayerMovementSmooth>();
         if (playerSpriteRenderer == null)
-            playerSpriteRenderer = col.gameObject.GetComponent<SpriteRenderer>();
+            //playerSpriteRenderer = col.gameObject.GetComponent<SpriteRenderer>();
+            playerSpriteRenderer = col.gameObject.GetComponentInChildren<SpriteRenderer>();
 
         playerMovementSmooth.enabled = false;
         
         //hvis man har indikeret at man vil blinke når man tager skade, så blinker man. 
         if(DamageFlicker)
 		{
-			Flicker flick = col.gameObject.AddComponent<Flicker>();
-			flick.StartFlicker(waittime);
+            Flicker flick = col.gameObject.GetComponent<Flicker>();
+            flick.StartFlicker(waittime);
 			playerSpriteRenderer.enabled = true;
         }
     }
