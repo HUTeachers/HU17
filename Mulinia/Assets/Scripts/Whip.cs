@@ -12,6 +12,8 @@ public interface IWhippable
 
 public class Whip : MonoBehaviour {
 
+	public float WhipCoolDown = 0.3f;
+
 	bool facingLeft = false;
 	bool attacking = false;
 
@@ -67,7 +69,8 @@ public class Whip : MonoBehaviour {
 
 		WhipRayCast(temp);
 		CollisionHandler();
-		yield return new WaitForSeconds(0.3f);
+
+		yield return new WaitForSeconds(WhipCoolDown); // Expose public variable
 		//Move whip back, enable attack again.
 		SetWhipping(false);
 		transform.localPosition = Vector3.zero;
