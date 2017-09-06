@@ -5,10 +5,10 @@ using UnityEngine.UI;
 public class LivUI : MonoBehaviour {
 
     //Spillerens figur
-    public GameObject spiller;
-    
-    //Scriptet på spilleren der holder styr på liv
-    public Health liv;
+    private GameObject spiller;
+
+	//Scriptet på spilleren der holder styr på liv
+	private Health liv;
 
     //Grafikken der ændre sig når spilleren mister liv
     public Image livGrafik;
