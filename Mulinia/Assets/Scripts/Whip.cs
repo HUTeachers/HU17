@@ -20,6 +20,7 @@ public class Whip : MonoBehaviour {
 	SpriteRenderer sr;
 
 	List<GameObject> whiplist;
+	public float whiplength = 2f;
 
 
 	// Use this for initialization
@@ -58,11 +59,12 @@ public class Whip : MonoBehaviour {
 		SetWhipping(true);
 
 		//Moves the whip one tile to the side, depending on what side you were last moving.
-		Vector3 temp = new Vector3(transform.localPosition.x - 1f, transform.localPosition.y, transform.localPosition.z);
+		Vector3 temp = new Vector3(transform.localPosition.x - whiplength, transform.localPosition.y, transform.localPosition.z);
 		if (facingLeft)
 		{
-			temp.x += 2f;
+			temp.x += whiplength * 2f;
 		}
+
 		//Move the whip
 		transform.localPosition = temp;
 
@@ -70,7 +72,7 @@ public class Whip : MonoBehaviour {
 		WhipRayCast(temp);
 		CollisionHandler();
 
-		yield return new WaitForSeconds(WhipCoolDown); // Expose public variable
+		yield return new WaitForSeconds(WhipCoolDown);
 		//Move whip back, enable attack again.
 		SetWhipping(false);
 		transform.localPosition = Vector3.zero;
@@ -80,9 +82,9 @@ public class Whip : MonoBehaviour {
 	{
 
 		//Get everything we whip.
-		
-		RaycastHit2D[] collidersHigh = Physics2D.RaycastAll(new Vector2(transform.position.x, transform.position.y + 0.2f), new Vector2(temp.x, temp.y), 0.5f);
-		RaycastHit2D[] collidersLow = Physics2D.RaycastAll(new Vector2(transform.position.x, transform.position.y - 0.2f), new Vector2(temp.x, temp.y), 0.5f);
+
+		RaycastHit2D[] collidersHigh = Physics2D.RaycastAll(new Vector2(transform.parent.position.x, transform.position.y + 0.2f), new Vector2(temp.x, temp.y), whiplength + 0.5f);
+		RaycastHit2D[] collidersLow = Physics2D.RaycastAll(new Vector2(transform.parent.position.x, transform.position.y - 0.2f), new Vector2(temp.x, temp.y), whiplength + 0.5f);
 
 		whiplist.AddRange(collidersHigh.Select(x => x.collider.gameObject));
 		whiplist.AddRange(collidersLow.Select(x => x.collider.gameObject).Where(x => !whiplist.Contains(x)).ToList());
